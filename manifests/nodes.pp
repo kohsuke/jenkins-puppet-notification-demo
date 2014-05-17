@@ -1,0 +1,3 @@
+node 'demo' {
+     include filetest
+}
