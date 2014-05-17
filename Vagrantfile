@@ -42,7 +42,10 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   config.vm.provision "puppet" do |puppet|
     puppet.manifests_path = "manifests"
+    puppet.module_path    = "modules"
     puppet.manifest_file  = "site.pp"
+    # 10.0.2.2 is the IP address of the host when seen from the NAT-ed guest
+    puppet.options        = ['--reports','http','--reporturl','http://10.0.2.2:8080/puppet/report']
   end
 
 end

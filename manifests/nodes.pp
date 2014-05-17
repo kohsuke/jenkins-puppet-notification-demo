@@ -1,3 +1,3 @@
-node 'demo' {
+node default {
      include filetest
 }
