@@ -10,7 +10,7 @@ WORKDIR /home/demo
 # install Artifactory
 # This runs on port 8081
 RUN wget -O artifactory.zip 'http://downloads.sourceforge.net/project/artifactory/artifactory/3.2.1.1/artifactory-3.2.1.1.zip?r=http%3A%2F%2Fsourceforge.net%2Fprojects%2Fartifactory%2Ffiles%2Fartifactory%2F3.2.1.1%2F&ts=1402876799&use_mirror=hivelocity'
-RUN unzip artifactory.zip
+RUN unzip artifactory.zip; rm artifactory.zip
 RUN ln -s artifactory-* artifactory
 
 # install Jenkins
