@@ -18,9 +18,10 @@ RUN wget -O jenkins.war http://mirrors.jenkins-ci.org/war/latest/jenkins.war
 
 ADD demo.sh /home/demo/demo.sh
 ADD jenkins /home/demo/jenkins
+ADD artifactory /home/demo/artifactory/data
 
 USER root
-RUN chown -R demo:demo /home/demo/jenkins
+RUN chown -R demo:demo /home/demo/jenkins /home/demo/artifactory/data
 USER demo
 
 EXPOSE 8080 8081
