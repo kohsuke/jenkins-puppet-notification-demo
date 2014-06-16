@@ -16,12 +16,8 @@ RUN ln -s artifactory-* artifactory
 # install Jenkins
 RUN wget -O jenkins.war http://mirrors.jenkins-ci.org/war/latest/jenkins.war
 
-# and plugins for demo
-RUN mkdir jenkins/plugins
-RUN wget -O jenkins/plugins/puppet.jpi https://updates.jenkins-ci.org/latest/puppet.hpi
-RUN wget -O jenkins/plugins/deployment-notification.jpi https://updates.jenkins-ci.org/latest/deployment-notification.hpi
-
 ADD demo.sh /home/demo/demo.sh
+ADD jenkins /home/demo/jenkins
 
 EXPOSE 8080 8081
 ENTRYPOINT /home/demo/demo.sh
