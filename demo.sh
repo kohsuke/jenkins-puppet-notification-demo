@@ -1,6 +1,6 @@
 #!/bin/bash
 sudo mkdir /var/run/sshd
-sudo /usr/sbin/sshd
+sudo /etc/init.d/ssh start
 
 cd /home/demo
 ./artifactory/bin/artifactory.sh > artifactory.log 2>&1 &

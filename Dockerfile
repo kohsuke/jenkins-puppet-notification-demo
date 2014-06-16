@@ -1,9 +1,9 @@
 FROM ubuntu:14.04
 RUN apt-get update
 RUN apt-get install -y --no-install-recommends openjdk-7-jdk
-RUN apt-get install -y wget puppet unzip maven git tomcat7 openssh-server
+RUN apt-get install -y wget puppet unzip maven git tomcat7 openssh-server vim
 
-RUN useradd -m -p $(perl -e 'print crypt($ARGV[0], "password")' demo) demo
+RUN useradd -m -p $(perl -e 'print crypt($ARGV[0], "password")' demo) -s /bin/bash demo
 USER demo
 WORKDIR /home/demo
 
@@ -25,6 +25,7 @@ ADD jenkins /home/demo/jenkins
 ADD artifactory /home/demo/artifactory/data
 ADD puppet /home/demo/puppet
 ADD home /home/demo
+ADD etc/sshd_config /etc/ssh/sshd_config
 
 USER root
 RUN echo 'demo ALL=NOPASSWD: ALL' >> /etc/sudoers
