@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata>
+  <groupId>org.kohsuke.test</groupId>
+  <artifactId>xyz</artifactId>
+  <version>1.0-20140616.011031-1</version>
+  <versioning>
+    <latest>1.0-SNAPSHOT</latest>
+    <versions>
+      <version>1.0-SNAPSHOT</version>
+    </versions>
+    <lastUpdated>20140616011106</lastUpdated>
+  </versioning>
+</metadata>

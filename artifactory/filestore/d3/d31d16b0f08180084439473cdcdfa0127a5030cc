@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata>
+  <groupId>org.kohsuke.test</groupId>
+  <artifactId>xyz</artifactId>
+  <version>1.0-20140616.011031-1</version>
+  <versioning>
+    <snapshot>
+      <timestamp>20140616.011031</timestamp>
+      <buildNumber>1</buildNumber>
+    </snapshot>
+    <lastUpdated>20140616011106</lastUpdated>
+    <snapshotVersions>
+      <snapshotVersion>
+        <extension>pom</extension>
+        <value>1.0-20140616.011031-1</value>
+        <updated>20140616011031</updated>
+      </snapshotVersion>
+      <snapshotVersion>
+        <extension>war</extension>
+        <value>1.0-20140616.011031-1</value>
+        <updated>20140616011031</updated>
+      </snapshotVersion>
+    </snapshotVersions>
+  </versioning>
+</metadata>
