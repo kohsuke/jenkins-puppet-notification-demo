@@ -21,8 +21,13 @@ ADD jenkins /home/demo/jenkins
 ADD artifactory /home/demo/artifactory/data
 
 USER root
+RUN echo 'demo ALL=NOPASSWD: ALL' >> /etc/sudoers
 RUN chown -R demo:demo /home/demo/jenkins /home/demo/artifactory/data
 USER demo
 
-EXPOSE 8080 8081
+# work in progress
+RUN apt-get install -y tomcat7
+ADD tomcat/server.xml /etc/tomcat7/server.xml
+
+EXPOSE 8080 8081 8082
 ENTRYPOINT /home/demo/demo.sh

@@ -5,4 +5,6 @@ cd /home/demo
 export JENKINS_HOME=./jenkins
 java -jar jenkins.war > jenkins.log 2>&1 &
 
+sudo /etc/init.d/tomcat7 start
+
 tail -F jenkins.log artifactory.log
