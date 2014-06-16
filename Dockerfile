@@ -25,14 +25,16 @@ ADD home /home/demo
 
 USER root
 RUN echo 'demo ALL=NOPASSWD: ALL' >> /etc/sudoers
-RUN chown -R demo:demo /home/demo/jenkins /home/demo/artifactory/data
+RUN chown -R demo:demo /home/demo
 USER demo
 
 # work in progress
 #----------------------------
 # create a git repo out of puppet recipes
-RUN cd puppet; git init; git add .; git commit -m "initial commit"
-RUN git clone --bare https://github.com/kohsuke/hello-world-webapp.git
+RUN cd puppet; git init; git add .; HOME=/home/demo git commit -am "initial commit"
+
+# clone repo and do a build once (to create a local workspace & seed Maven repo)
+RUN git clone --bare https://github.com/kohsuke/hello-world-webapp.git; git clone hello-world-webapp.git ws; cd ws; mvn install
 
 EXPOSE 8080 8081 8082
 ENTRYPOINT /home/demo/demo.sh
