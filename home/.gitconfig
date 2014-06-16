@@ -1,3 +1,5 @@
 [user]
     email = kk@kohsuke.org
     name = Kohsuke Kawaguchi
+[push]
+    default = simple
