@@ -4,7 +4,7 @@ class xyz {
         cwd => "/tmp",
     }
 
-    file { "/usr/share/xyz.war":
+    file { "/var/lib/tomcat7/webapps/xyz.war":
         ensure => present,
         source => "/tmp/xyz.war",
         require => Exec["xyz.war"]
