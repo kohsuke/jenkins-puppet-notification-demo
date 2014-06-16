@@ -1,17 +1,100 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<project>
+<maven2-moduleset plugin="maven-plugin@2.3">
   <actions/>
   <description></description>
   <keepDependencies>false</keepDependencies>
   <properties/>
-  <scm class="hudson.scm.NullSCM"/>
-  <canRoam>false</canRoam>
+  <scm class="hudson.plugins.git.GitSCM" plugin="git@2.2.1">
+    <configVersion>2</configVersion>
+    <userRemoteConfigs>
+      <hudson.plugins.git.UserRemoteConfig>
+        <url>https://github.com/kohsuke/hello-world-webapp.git</url>
+      </hudson.plugins.git.UserRemoteConfig>
+    </userRemoteConfigs>
+    <branches>
+      <hudson.plugins.git.BranchSpec>
+        <name>*/master</name>
+      </hudson.plugins.git.BranchSpec>
+    </branches>
+    <doGenerateSubmoduleConfigurations>false</doGenerateSubmoduleConfigurations>
+    <submoduleCfg class="list"/>
+    <extensions/>
+  </scm>
+  <canRoam>true</canRoam>
   <disabled>false</disabled>
   <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
   <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
   <triggers/>
   <concurrentBuild>false</concurrentBuild>
-  <builders/>
-  <publishers/>
+  <rootModule>
+    <groupId>org.kohsuke.test</groupId>
+    <artifactId>xyz</artifactId>
+  </rootModule>
+  <goals>clean install</goals>
+  <aggregatorStyleBuild>true</aggregatorStyleBuild>
+  <incrementalBuild>false</incrementalBuild>
+  <ignoreUpstremChanges>false</ignoreUpstremChanges>
+  <archivingDisabled>false</archivingDisabled>
+  <siteArchivingDisabled>false</siteArchivingDisabled>
+  <resolveDependencies>false</resolveDependencies>
+  <processPlugins>false</processPlugins>
+  <mavenValidationLevel>-1</mavenValidationLevel>
+  <runHeadless>false</runHeadless>
+  <disableTriggerDownstreamProjects>false</disableTriggerDownstreamProjects>
+  <settings class="jenkins.mvn.DefaultSettingsProvider"/>
+  <globalSettings class="jenkins.mvn.DefaultGlobalSettingsProvider"/>
+  <reporters/>
+  <publishers>
+    <org.jfrog.hudson.ArtifactoryRedeployPublisher plugin="artifactory@2.2.3">
+      <evenIfUnstable>false</evenIfUnstable>
+      <details>
+        <artifactoryName>-406811472@1402879542884</artifactoryName>
+        <repositoryKey>libs-release-local</repositoryKey>
+        <snapshotsRepositoryKey>libs-snapshot-local</snapshotsRepositoryKey>
+        <artifactoryUrl>http://localhost:8081/artifactory</artifactoryUrl>
+      </details>
+      <deployArtifacts>true</deployArtifacts>
+      <artifactDeploymentPatterns>
+        <includePatterns></includePatterns>
+        <excludePatterns></excludePatterns>
+      </artifactDeploymentPatterns>
+      <includeEnvVars>false</includeEnvVars>
+      <envVarsPatterns>
+        <includePatterns></includePatterns>
+        <excludePatterns>*password*,*secret*</excludePatterns>
+      </envVarsPatterns>
+      <runChecks>false</runChecks>
+      <violationRecipients></violationRecipients>
+      <includePublishArtifacts>false</includePublishArtifacts>
+      <passIdentifiedDownstream>false</passIdentifiedDownstream>
+      <scopes></scopes>
+      <licenseAutoDiscovery>true</licenseAutoDiscovery>
+      <disableLicenseAutoDiscovery>false</disableLicenseAutoDiscovery>
+      <discardOldBuilds>false</discardOldBuilds>
+      <discardBuildArtifacts>true</discardBuildArtifacts>
+      <matrixParams></matrixParams>
+      <enableIssueTrackerIntegration>false</enableIssueTrackerIntegration>
+      <allowPromotionOfNonStagedBuilds>false</allowPromotionOfNonStagedBuilds>
+      <filterExcludedArtifactsFromBuild>false</filterExcludedArtifactsFromBuild>
+      <deployBuildInfo>true</deployBuildInfo>
+      <aggregateBuildIssues>false</aggregateBuildIssues>
+      <blackDuckRunChecks>false</blackDuckRunChecks>
+      <blackDuckAppName></blackDuckAppName>
+      <blackDuckAppVersion></blackDuckAppVersion>
+      <blackDuckReportRecipients></blackDuckReportRecipients>
+      <blackDuckScopes></blackDuckScopes>
+      <blackDuckIncludePublishedArtifacts>false</blackDuckIncludePublishedArtifacts>
+      <autoCreateMissingComponentRequests>true</autoCreateMissingComponentRequests>
+      <autoDiscardStaleComponentRequests>true</autoDiscardStaleComponentRequests>
+    </org.jfrog.hudson.ArtifactoryRedeployPublisher>
+  </publishers>
   <buildWrappers/>
-</project>
+  <prebuilders/>
+  <postbuilders/>
+  <runPostStepsIfResult>
+    <name>FAILURE</name>
+    <ordinal>2</ordinal>
+    <color>RED</color>
+    <completeBuild>true</completeBuild>
+  </runPostStepsIfResult>
+</maven2-moduleset>
