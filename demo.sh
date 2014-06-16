@@ -1,4 +1,7 @@
 #!/bin/bash
+sudo mkdir /var/run/sshd
+sudo /usr/sbin/sshd
+
 cd /home/demo
 ./artifactory/bin/artifactory.sh > artifactory.log 2>&1 &
 

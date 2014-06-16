@@ -3,7 +3,7 @@ RUN apt-get update
 RUN apt-get install -y --no-install-recommends openjdk-7-jdk
 RUN apt-get install -y wget puppet unzip maven git tomcat7 openssh-server
 
-RUN useradd -m demo
+RUN useradd -m -p $(perl -e 'print crypt($ARGV[0], "password")' demo) demo
 USER demo
 WORKDIR /home/demo
 
@@ -15,6 +15,9 @@ RUN ln -s artifactory-* artifactory
 
 # install Jenkins
 RUN wget -O jenkins.war http://mirrors.jenkins-ci.org/war/latest/jenkins.war
+
+# clone repo and do a build once (to create a local workspace & seed Maven repo)
+RUN git clone --bare https://github.com/kohsuke/hello-world-webapp.git; git clone hello-world-webapp.git ws; cd ws; mvn install
 
 ADD demo.sh /home/demo/demo.sh
 ADD tomcat/server.xml /etc/tomcat7/server.xml
@@ -33,8 +36,5 @@ USER demo
 # create a git repo out of puppet recipes
 RUN cd puppet; git init; git add .; HOME=/home/demo git commit -am "initial commit"
 
-# clone repo and do a build once (to create a local workspace & seed Maven repo)
-RUN git clone --bare https://github.com/kohsuke/hello-world-webapp.git; git clone hello-world-webapp.git ws; cd ws; mvn install
-
-EXPOSE 8080 8081 8082
+EXPOSE 8080 8081 8082 22
 ENTRYPOINT /home/demo/demo.sh
