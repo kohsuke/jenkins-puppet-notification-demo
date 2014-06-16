@@ -1,7 +1,7 @@
 FROM ubuntu:14.04
 RUN apt-get update
 RUN apt-get install -y --no-install-recommends openjdk-7-jdk
-RUN apt-get install -y wget puppet unzip maven git
+RUN apt-get install -y wget puppet unzip maven git tomcat7 openssh-server
 
 RUN useradd -m demo
 USER demo
@@ -17,8 +17,10 @@ RUN ln -s artifactory-* artifactory
 RUN wget -O jenkins.war http://mirrors.jenkins-ci.org/war/latest/jenkins.war
 
 ADD demo.sh /home/demo/demo.sh
+ADD tomcat/server.xml /etc/tomcat7/server.xml
 ADD jenkins /home/demo/jenkins
 ADD artifactory /home/demo/artifactory/data
+ADD puppet /home/demo/puppet
 
 USER root
 RUN echo 'demo ALL=NOPASSWD: ALL' >> /etc/sudoers
@@ -26,8 +28,10 @@ RUN chown -R demo:demo /home/demo/jenkins /home/demo/artifactory/data
 USER demo
 
 # work in progress
-RUN apt-get install -y tomcat7
-ADD tomcat/server.xml /etc/tomcat7/server.xml
+#----------------------------
+# create a git repo out of puppet recipes
+RUN cd puppet; git init; git add .; git commit -m "initial commit"
+RUN git clone --bare https://github.com/kohsuke/hello-world-webapp.git
 
 EXPOSE 8080 8081 8082
 ENTRYPOINT /home/demo/demo.sh
