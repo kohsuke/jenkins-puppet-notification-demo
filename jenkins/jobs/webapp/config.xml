@@ -3,7 +3,13 @@
   <actions/>
   <description></description>
   <keepDependencies>false</keepDependencies>
-  <properties/>
+  <properties>
+    <hudson.plugins.promoted__builds.JobPropertyImpl plugin="promoted-builds@2.17">
+      <activeProcessNames>
+        <string>deployed</string>
+      </activeProcessNames>
+    </hudson.plugins.promoted__builds.JobPropertyImpl>
+  </properties>
   <scm class="hudson.plugins.git.GitSCM" plugin="git@2.2.1">
     <configVersion>2</configVersion>
     <userRemoteConfigs>
@@ -52,6 +58,9 @@
         <repositoryKey>libs-release-local</repositoryKey>
         <snapshotsRepositoryKey>libs-snapshot-local</snapshotsRepositoryKey>
         <artifactoryUrl>http://localhost:8081/artifactory</artifactoryUrl>
+        <stagingPlugin>
+          <pluginName>None</pluginName>
+        </stagingPlugin>
       </details>
       <deployArtifacts>true</deployArtifacts>
       <artifactDeploymentPatterns>

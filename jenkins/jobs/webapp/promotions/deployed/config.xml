@@ -1,0 +1,21 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<hudson.plugins.promoted__builds.PromotionProcess plugin="promoted-builds@2.17">
+  <keepDependencies>false</keepDependencies>
+  <properties/>
+  <scm class="hudson.scm.NullSCM"/>
+  <canRoam>false</canRoam>
+  <disabled>false</disabled>
+  <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
+  <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
+  <triggers/>
+  <concurrentBuild>false</concurrentBuild>
+  <conditions>
+    <org.jenkinsci.plugins.deployment.promoted__builds.DeploymentPromotionCondition plugin="deployment-notification@1.1">
+      <cond class="org.jenkinsci.plugins.deployment.conditions.ThresholdCondition">
+        <threshold>1</threshold>
+      </cond>
+    </org.jenkinsci.plugins.deployment.promoted__builds.DeploymentPromotionCondition>
+  </conditions>
+  <icon>star-gold</icon>
+  <buildSteps/>
+</hudson.plugins.promoted__builds.PromotionProcess>
