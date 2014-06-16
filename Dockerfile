@@ -21,6 +21,7 @@ ADD tomcat/server.xml /etc/tomcat7/server.xml
 ADD jenkins /home/demo/jenkins
 ADD artifactory /home/demo/artifactory/data
 ADD puppet /home/demo/puppet
+ADD home /home/demo
 
 USER root
 RUN echo 'demo ALL=NOPASSWD: ALL' >> /etc/sudoers
