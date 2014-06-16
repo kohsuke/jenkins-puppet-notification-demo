@@ -19,5 +19,9 @@ RUN wget -O jenkins.war http://mirrors.jenkins-ci.org/war/latest/jenkins.war
 ADD demo.sh /home/demo/demo.sh
 ADD jenkins /home/demo/jenkins
 
+USER root
+RUN chown -R demo:demo /home/demo/jenkins
+USER demo
+
 EXPOSE 8080 8081
 ENTRYPOINT /home/demo/demo.sh
