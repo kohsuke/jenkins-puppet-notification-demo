@@ -22,13 +22,13 @@ The Jenkins job `webapp` has a build promotion setup to perform promotion when t
 
 # Demo cheat sheet
 
-    * Go to `http://localhost:8080/` and walk through the job setup
-    * Manually start a `webapp` build and watch it deploy to Artifactory
-    * Go to terminal and run puppet to deploy the image to the production server.
-    * Go to `http://localhost:8082/xyz/` and see the deployment
-    * Go back to Jenkins and see the smoke test run and the promotion
-    * Go to `/home/demo/ws` and make some changes to the webapp, and push the change to `origin`
-    * Build `webapp` a couple of times to simulate the reality that not every build gets deployed
-    * Run puppet again, see that the change is reflected in `http://localhost:8082/xyz/`, and deployment side-effects have run
-    
+* Go to `http://localhost:8080/` and walk through the job setup
+* Manually start a `webapp` build and watch it deploy to Artifactory
+* Go to terminal and run puppet to deploy the image to the production server.
+* Go to `http://localhost:8082/xyz/` and see the deployment
+* Go back to Jenkins and see the smoke test run and the promotion
+* Go to `/home/demo/ws` and make some changes to the webapp, and push the change to `origin`
+* Build `webapp` a couple of times to simulate the reality that not every build gets deployed
+* Run puppet again, see that the change is reflected in `http://localhost:8082/xyz/`, and deployment side-effects have run
+
 
