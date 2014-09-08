@@ -8,7 +8,7 @@ The priary user in the image is `demo` (with password `demo`), and sshd is confi
 
 Jenkins contains a simple build job that builds a webapp `xyz.war` and deploys to [Artifactory](http://localhost:8081/artifactory/libs-snapshot-local/org/kohsuke/test/xyz/1.0-SNAPSHOT/).
 
-To run puppet, login via ssh into the demo box and run `cd /home/demo/puppet; sudo ./apply.sh`. This will run puppet and submit the result back to Jenkins.
+To run puppet, login via ssh into the demo box and run `cd /home/demo/puppet; ./apply.sh`. This will run puppet and submit the result back to Jenkins.
 
 `/home/demo/ws` contains a local checkout of the webapp that can be edited, committed, and pushed to change the webapp.
 
